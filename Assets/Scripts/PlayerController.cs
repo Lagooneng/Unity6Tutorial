@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float HP { get; set; } = 100.0f;
+
     private Rigidbody2D rb;
     private PlayerControlInput inputActions;
     private Animator animator;
