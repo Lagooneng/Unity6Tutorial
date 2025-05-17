@@ -19,10 +19,21 @@ public class Spawner : MonoBehaviour
 
         while (true)
         {
-            GameObject SpawnedObejct = Instantiate(SpawningTarget);
+            //GameObject SpawnedObejct = Instantiate(SpawningTarget);
+            GameObject SpawnedObejct = ObjectPoolManager.Instance.Get(SpawningTarget, transform.position, Quaternion.identity);
 
-            Destroy(SpawnedObejct, lifeTime);
+            //Destroy(SpawnedObejct, lifeTime);
+
+            StartCoroutine(RetrieveTarget(SpawnedObejct));
+
             yield return new WaitForSeconds(spawningTime);
         }
+    }
+
+    IEnumerator RetrieveTarget(GameObject obj)
+    {
+        yield return new WaitForSeconds(spawningTime);
+
+        ObjectPoolManager.Instance.Release(SpawningTarget, obj);
     }
 }

@@ -1,8 +1,18 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float HP { get; set; } = 100.0f;
+    private float hp = 100.0f;
+    public float HP
+    {
+        get => hp;
+        set
+        {
+            hp = value;
+            HPChanged();
+        }
+    }
 
     private Rigidbody2D rb;
     private PlayerControlInput inputActions;
@@ -72,5 +82,13 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         inputActions.Disable();
+    }
+
+    public void HPChanged()
+    {
+        if( HP <= 0.0f )
+        {
+            GameManager.Instance.StopGame();
+        }
     }
 }
