@@ -1,0 +1,11 @@
+Unity6
+- New Input System
+- Animation
+- Trigger
+- Scriptable Object
+- Coroutine
+- Singleton
+- Object Pooling
+- GameManager
+- UI
+- Firebase: Sing up, login, logout
